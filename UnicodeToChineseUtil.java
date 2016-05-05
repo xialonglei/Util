@@ -4,13 +4,13 @@
 *
 */
 pubilc class UnicodeToChineseUtil{
-	/**unicodeÇ°×º\u*/
+	/**unicodeå‰ç¼€\u*/
 	private final String PREFIX_UNICODE = "\\u";
 	public UnicodeToChineseUtil{}
 	/**
-	 * ½«×Ö·û´®ÖĞµÄunicode×ªÎªÖĞÎÄ
-	 * @param text Òª½âÎöµÄ×Ö·û´®
-	 * @return sb.toString() ½«unicode×ªÎªÖĞÎÄµÄ×Ö·û´®
+	 * å°†å­—ç¬¦ä¸²ä¸­çš„unicodeè½¬ä¸ºä¸­æ–‡
+	 * @param text è¦è§£æçš„å­—ç¬¦ä¸²
+	 * @return sb.toString() å°†unicodeè½¬ä¸ºä¸­æ–‡çš„å­—ç¬¦ä¸²
 	 */
 	public String ascii2Native(String str) {
 		StringBuilder sb = new StringBuilder();
@@ -26,7 +26,7 @@ pubilc class UnicodeToChineseUtil{
 		return sb.toString();
 	}
 	/**
-	*½«\uxxxx×ªÎªchar
+	*å°†\uxxxxè½¬ä¸ºchar
 	*@param str \uxxxx
 	*@return (char)code
 	*/
@@ -38,10 +38,10 @@ pubilc class UnicodeToChineseUtil{
 			throw new IllegalArgumentException("Ascii string of a native character must start with \"\\u\".");
 		}
 		String tmp = str.substring(2, 4);
-		// ×ªÎªÊ®½øÖÆ
-		int code = Integer.parseInt(tmp, 16) << 8; // ×ªÎª¸ßÎ»£¬ºóÓëµØÎ»Ïà¼Ó
+		// å°†åå…­è¿›åˆ¶è½¬ä¸ºåè¿›åˆ¶
+		int code = Integer.parseInt(tmp, 16) << 8; // è½¬ä¸ºé«˜ä½ï¼Œåä¸åœ°ä½ç›¸åŠ 
 		tmp = str.substring(4, 6);
-		code += Integer.parseInt(tmp, 16); //ÓëµÍ8ÎªÏà¼Ó
+		code += Integer.parseInt(tmp, 16); //ä¸ä½8ä¸ºç›¸åŠ 
 		System.out.println((char) code);
 		return (char) code;
 	}
