@@ -8,9 +8,8 @@ pubilc class UnicodeToChineseUtil{
 	private final String PREFIX_UNICODE = "\\u";
 	public UnicodeToChineseUtil{}
 	/**
-	 * 将字符串中的unicode转为中文
-	 * @param text 要解析的字符串
-	 * @return sb.toString() 将unicode转为中文的字符串
+	 * @param text 
+	 * @return sb.toString() 
 	 */
 	public String ascii2Native(String str) {
 		StringBuilder sb = new StringBuilder();
@@ -26,7 +25,6 @@ pubilc class UnicodeToChineseUtil{
 		return sb.toString();
 	}
 	/**
-	*将\uxxxx转为char
 	*@param str \uxxxx
 	*@return (char)code
 	*/
@@ -38,10 +36,10 @@ pubilc class UnicodeToChineseUtil{
 			throw new IllegalArgumentException("Ascii string of a native character must start with \"\\u\".");
 		}
 		String tmp = str.substring(2, 4);
-		// 将十六进制转为十进制
-		int code = Integer.parseInt(tmp, 16) << 8; // 转为高位，后与地位相加
+		// 十六进制转换为十进制
+		int code = Integer.parseInt(tmp, 16) << 8; // 转为高位，后与低位相加
 		tmp = str.substring(4, 6);
-		code += Integer.parseInt(tmp, 16); //与低8为相加
+		code += Integer.parseInt(tmp, 16); //高位与低位相加
 		System.out.println((char) code);
 		return (char) code;
 	}
